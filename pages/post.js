@@ -22,17 +22,23 @@ const Post = ({ id, comments }) => {
     <div>
       <h2>You are viewing post #{id}</h2>
       {comments.map((c) => (
-        <div className=''>
-          <p>{c.body}</p>
-          <span>--{c.email}</span>
-        </div>
+        <Comment {...c}/>
       ))}
     </div>
   );
 };
 
+const Comment = ({ body, email }) => {
+  return (
+    <div>
+      <p>{body}</p>
+      <span style={{ color: 'red' }}>--{email}</span>
+    </div>
+  );
+}
+
 Post.getInitialProps = async ({ query }) => {
-  const res = await axios.get("https://jsonplaceholder.typicode.com/comments?postId=1")
+  const res = await axios.get(`https://jsonplaceholder.typicode.com/comments?postId=${query.id}`)
   const { data } = res;
 
   return {...query, comments: data};
