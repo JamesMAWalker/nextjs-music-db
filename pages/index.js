@@ -12,7 +12,7 @@ const index = ({ posts }) => {
       <h1>NEXT JS: Replacing Redux</h1>
       {posts.map((p) => (
         <div key={p.id}>
-          <Link href={`/post?id=${p.id}`}>
+          <Link href={`/post?id=${p.id}`} as={`/post/${p.id}`}>
             <a>{p.title}</a>
           </Link>
           <p>{p.body}</p>
