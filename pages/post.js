@@ -1,22 +1,12 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 
-const Post = withRouter(({ router }) => {
-  console.log(router);
+// const Post = ({ router }) => {
+//   console.log(router);
 
-  const { id } = router.query;
+//   const { id } = router.query;
   
 
-  return (
-    <div>
-      <h2>You are viewing post #{id}</h2>
-    </div>
-  );
-});
-
-// const Post = ({ query }) => {
-//   console.log(query);
-//   const { id } = query;
 //   return (
 //     <div>
 //       <h2>You are viewing post #{id}</h2>
@@ -24,8 +14,18 @@ const Post = withRouter(({ router }) => {
 //   );
 // };
 
-// Post.getInitialProps = ({ query }) => {
-// return query;
-// }
+const Post = ({ query }) => {
+  console.log(query);
+  const { id } = query;
+  return (
+    <div>
+      <h2>You are viewing post #{id}</h2>
+    </div>
+  );
+};
 
-export default Post;
+Post.getInitialProps = ({ query }) => {
+return query;
+}
+
+export default withRouter(Post);
