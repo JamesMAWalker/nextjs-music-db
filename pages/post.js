@@ -16,8 +16,7 @@ import axios from 'axios';
 // };
 
 const Post = ({ id, comments }) => {
-  console.log(id, comments);
-  // const { id } = query;
+  
   return (
     <div>
       <h2>You are viewing post #{id}</h2>
